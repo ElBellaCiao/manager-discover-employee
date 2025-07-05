@@ -6,7 +6,7 @@ use std::net::IpAddr;
 pub struct Assignment {
     pub group: String,
     pub ip: IpAddr,
-    pub stocks: Vec<String>,
+    pub instruments: Vec<String>,
     pub output_groups: Vec<String>,
 
     // format required by ddb
