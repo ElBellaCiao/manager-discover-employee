@@ -1,4 +1,3 @@
-use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
 
@@ -8,10 +7,6 @@ pub struct Assignment {
     pub ip: IpAddr,
     pub instrument_ids: Vec<usize>,
     pub output_groups: Vec<String>,
-
-    // format required by ddb
-    #[serde(with = "chrono::serde::ts_seconds")]
-    pub expire_at: DateTime<Utc>,
     // Consider adding a status field.
 }
 
