@@ -1,0 +1,26 @@
+use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
+use std::net::IpAddr;
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct Assignment {
+    pub group: String,
+    pub ip: IpAddr,
+    pub stocks: Vec<String>,
+    pub output_groups: Vec<String>,
+
+    // format required by ddb
+    #[serde(with = "chrono::serde::ts_seconds")]
+    pub expire_at: DateTime<Utc>,
+    // Consider adding a status field.
+}
+
+impl cloud_util::Keyed for Assignment {
+    fn pk(&self) -> String {
+        self.group.to_string()
+    }
+
+    fn sk(&self) -> String {
+        self.ip.to_string()
+    }
+}

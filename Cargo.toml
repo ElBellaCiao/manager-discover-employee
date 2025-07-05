@@ -4,3 +4,18 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+# === Core Runtime ===
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+config = "0"
+
+# === Utilities ===
+chrono = { version = "0", features = ["serde"] }
+
+# === AWS SDK & Lambda Support ===
+lambda_runtime = "0"
+
+# === Custom Libraries ===
+cloud-util = { git = "https://github.com/ElBellaCiao/cloud-util.git", features = ["table"], rev = "4480dcdd3b0ac85c45385a85832273126311e9a4" }
