@@ -1,5 +1,7 @@
-mod assignment;
-mod payload;
+use manager_discover_employee::Assignment;
+use serde::{Deserialize, Serialize};
 
-pub use assignment::Assignment;
-pub use payload::Payload;
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Payload {
+    pub assignments: Vec<Assignment>,
+}

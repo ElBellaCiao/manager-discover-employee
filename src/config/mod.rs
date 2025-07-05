@@ -1,6 +1,6 @@
-use crate::model::Assignment;
 use anyhow::Result;
 use config::{Config, Environment};
+use manager_discover_employee::Assignment;
 use serde::Deserialize;
 use std::sync::Arc;
 
