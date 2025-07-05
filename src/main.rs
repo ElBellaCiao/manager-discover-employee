@@ -2,14 +2,18 @@ mod config;
 mod model;
 
 use crate::config::{Deps, Settings};
-use crate::model::Assignment;
+use crate::model::Payload;
 use anyhow::Result;
 use lambda_runtime::{Error, LambdaEvent, run, service_fn};
 use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 
-async fn handler(assignment: LambdaEvent<Assignment>, deps: Deps) -> Result<(), Error> {
-    Ok(deps.table_client.put_entry(assignment.payload).await?)
+async fn handler(assignment: LambdaEvent<Payload>, deps: Deps) -> Result<(), Error> {
+    for assignment in assignment.payload.assignments {
+        deps.table_client.put_entry(assignment).await?;
+    }
+
+    Ok(())
 }
 
 #[tokio::main]
