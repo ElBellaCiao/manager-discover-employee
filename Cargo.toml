@@ -11,6 +11,9 @@ serde = { version = "1", features = ["derive"] }
 tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 config = "0"
 
+# === Utilities ===
+chrono = { version = "0", features = ["serde"] }
+
 # === AWS SDK & Lambda Support ===
 lambda_runtime = "0"
 
