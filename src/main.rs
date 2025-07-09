@@ -1,14 +1,16 @@
 mod config;
-mod model;
 
 use crate::config::{Deps, Settings};
-use crate::model::Payload;
 use anyhow::Result;
 use lambda_runtime::{Error, LambdaEvent, run, service_fn};
+use manager_discover_employee::Payload;
 use std::sync::Arc;
+use tracing::info;
 use tracing_subscriber::EnvFilter;
 
 async fn handler(assignment: LambdaEvent<Payload>, deps: Deps) -> Result<(), Error> {
+    info!("payload: {:?}", assignment.payload);
+
     for assignment in assignment.payload.assignments {
         deps.table_client.put_entry(assignment).await?;
     }

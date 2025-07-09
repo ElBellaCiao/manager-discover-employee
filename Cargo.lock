@@ -1571,6 +1571,7 @@ dependencies = [
  "lambda_runtime",
  "serde",
  "tokio",
+ "tracing",
  "tracing-subscriber",
 ]
 

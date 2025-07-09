@@ -3,6 +3,11 @@ use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
 
 #[derive(Debug, Deserialize, Serialize)]
+pub struct Payload {
+    pub assignments: Vec<Assignment>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Assignment {
     pub group: String,
     pub ip: IpAddr,

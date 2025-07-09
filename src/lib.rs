@@ -1,3 +1,3 @@
 mod export;
 
-pub use export::Assignment;
+pub use export::*;
